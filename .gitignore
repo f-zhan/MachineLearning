@@ -1,0 +1,8 @@
+# Linux.gitignore
+*~
+
+# KDE directory preferences
+.directory
+
+
+
