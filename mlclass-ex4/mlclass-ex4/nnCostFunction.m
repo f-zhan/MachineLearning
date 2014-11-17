@@ -62,13 +62,15 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 %--------------------------------------------------------------------
-% Feedforward and cost function
+% Feedforward
 a1 = [ones(m,1) X];
 z2 = a1 * Theta1';
 a2 = sigmoid(a1 * Theta1');
 a2 = [ones(m,1) a2];
 a3 = sigmoid(a2 * Theta2');
 
+
+%--------------------------------------------------------------------
 % Regularized cost function
 y = eye(num_labels)(y,:);
 J = -y .* log(a3) - (1-y) .* log(1-a3);
@@ -85,6 +87,7 @@ Theta2(:,1) = 0;
 J += lambda/2/m * (sumsq(Theta1(:)) + sumsq(Theta2(:)));
 
 
+%--------------------------------------------------------------------
 % Backpropagation
 delta_3 = a3 - y;
 delta_2 = delta_3 * Theta2(:,2:end) .* sigmoidGradient(z2);
